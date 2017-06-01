@@ -19,9 +19,20 @@ class HomePresenter : BasePresenter, HomeContract{
     }
     
     func loadAllCharacters(offset: Int){
-        CharacterModel.instance.loadAllCharacters(offset: offset).observeOn(Schedulers.ui).subscribe(
+        CharacterModel.instance.loadCharacters(offset: offset, name: nil).observeOn(Schedulers.ui).subscribe(
             onNext: { [unowned self] characterArray in
                 self.homeViewController?.loadAllCharacters(characterArray: characterArray)
+            },
+            onError: { _ in
+                
+            }
+        ).addDisposableTo(getDisposeBag())
+    }
+    
+    func searchCharacterByName(name: String, offset: Int){
+        CharacterModel.instance.loadCharacters(offset: offset, name: name).observeOn(Schedulers.ui).subscribe(
+            onNext: { [unowned self] characterArray in
+                self.homeViewController?.loadCharactersBySearch(characterArray: characterArray)
             },
             onError: { _ in
                 

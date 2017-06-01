@@ -11,4 +11,5 @@ import Foundation
 protocol HomeContract{
     func set(h: HomeViewController)
     func loadAllCharacters(offset: Int)
+    func searchCharacterByName(name: String, offset: Int)
 }

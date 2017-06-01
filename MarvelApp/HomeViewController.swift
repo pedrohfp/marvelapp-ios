@@ -8,12 +8,15 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var characterTableView: UITableView!
     
     //ArrayList of Characters
     var characterArray = [Character]()
+    
+    //ArrayList of Characters Searched
+    var searchCharacterArray = [Character]()
     
     //This is the reference to the Presenter, which is loaded in the segue
     var presenter: HomePresenter?
@@ -39,6 +42,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Setting delegates and data sources
         self.characterTableView.delegate = self
         self.characterTableView.dataSource = self
+        self.characterTableView.tag = 0
         
         //
         // Set the login controller to the MainViewModel:
@@ -60,7 +64,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func createSearchBar(){
         let searchBar = UISearchBar()
         searchBar.placeholder = "Pesquise seu personagem"
-        //searchBar.delegate = self
+        searchBar.delegate = self
         self.navigationItem.titleView = searchBar
     }
     
@@ -69,25 +73,57 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.characterTableView.reloadData()
     }
     
+    func loadCharactersBySearch(characterArray: [Character]){
+        self.searchCharacterArray = characterArray
+        self.characterTableView.reloadData()
+    }
+    
+    func cleanSearchTableView(){
+        self.characterTableView.tag = 0
+        self.characterTableView.reloadData()
+        self.searchCharacterArray.removeAll()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        cleanSearchTableView()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if(searchText.isEmpty == false){
+           self.presenter?.searchCharacterByName(name: searchBar.text!, offset: 0)
+           self.characterTableView.tag = 1
+        }else{
+           cleanSearchTableView()
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return characterArray.count
+        if tableView.tag == 0{
+           return characterArray.count
+        }else{
+           return searchCharacterArray.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //Get character from array
-        let character = characterArray[indexPath.item]
+        let character: Character
+        
+        if tableView.tag == 0{
+           character = characterArray[indexPath.item]
+        }else{
+           character = searchCharacterArray[indexPath.item]
+        }
         
         //Instante and adding character on a cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "charactersTableCell") as! HomeTableViewCell
         cell.name.text = character.name
         cell.thumbnail.image = character.thumbnail
-        
-        
         
         return cell
     }

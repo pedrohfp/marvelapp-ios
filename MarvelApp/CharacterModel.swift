@@ -16,12 +16,18 @@ class CharacterModel{
     
     static let instance = CharacterModel()
     
-    func loadAllCharacters(offset: Int) -> Observable<[Character]>{
+    func loadCharacters(offset: Int, name: String?) -> Observable<[Character]>{
         return Observable.create({ observer in
             
-            let path = "v1/public/characters?offset=\(offset)"
+            let path: String?
             
-            RestFactory(method: HTTPMethod.get, path: path)
+            if name == nil{
+                path = "v1/public/characters?offset=\(offset)"
+            }else{
+                path = "v1/public/characters?offset=\(offset)&nameStartsWith=\(name!)"
+            }
+            
+            RestFactory(method: HTTPMethod.get, path: path!)
                 .createUrlRequest(parameters: nil)
                 .responseJSON(completionHandler: { response in
                   if let status = response.response?.statusCode{
@@ -65,5 +71,4 @@ class CharacterModel{
             
         }).subscribeOn(Schedulers.network)
     }
-        
 }
