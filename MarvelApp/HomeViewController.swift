@@ -12,6 +12,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var characterTableView: UITableView!
     
+    //Instantiate SearchBar
+    let searchBar: UISearchBar
+    
     //ArrayList of Characters
     var characterArray = [Character]()
     
@@ -22,6 +25,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var presenter: HomePresenter?
     
     required init?(coder aDecoder: NSCoder) {
+        
+        //Initialize SearchBar
+        searchBar = UISearchBar()
+        
         //Initialize Presenter
         presenter = HomePresenter()
         
@@ -62,7 +69,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func createSearchBar(){
-        let searchBar = UISearchBar()
         searchBar.placeholder = "Pesquise seu personagem"
         searchBar.delegate = self
         self.navigationItem.titleView = searchBar
@@ -89,12 +95,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if(searchText.isEmpty == false){
-           self.presenter?.searchCharacterByName(name: searchBar.text!, offset: 0)
-           self.characterTableView.tag = 1
+        
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(reloadTableViewBySearch(searchText:)), object: nil)
+        self.perform(#selector(reloadTableViewBySearch(searchText:)), with: nil, afterDelay: 0.5)
+        
+    }
+    
+    func reloadTableViewBySearch(searchText: String){
+        if(searchBar.text?.isEmpty == false){
+            print(searchBar.text!)
+            self.presenter?.searchCharacterByName(name: searchBar.text!, offset: 0)
+            self.characterTableView.tag = 1
         }else{
-           cleanSearchTableView()
+            cleanSearchTableView()
         }
+
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
