@@ -36,7 +36,7 @@ class RestFactory {
         let timestamp = String(NSDate().timeIntervalSince1970 * 1000)
         let hash = MD5(timestamp + privateApiKey + apikey )
         
-        let url = self.baseUrl + self.path + "&ts=\(timestamp)&apikey=\(apikey)&hash=\(hash!)"
+        let url = self.baseUrl + self.path + "ts=\(timestamp)&apikey=\(apikey)&hash=\(hash!)"
         
         print(url)
         

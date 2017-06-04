@@ -21,6 +21,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //ArrayList of Characters Searched
     var searchCharacterArray = [Character]()
     
+    //Character Id when clicked on cell item
+    var characterId: Int64?
+    
     //This is the reference to the Presenter, which is loaded in the segue
     var presenter: HomePresenter?
     
@@ -142,15 +145,36 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.tag == 0{
+            let character = characterArray[indexPath.item]
+            self.characterId = character.id
+            self.performSegue(withIdentifier: "showCharacterDetails", sender: nil)
+        }else{
+            let character = searchCharacterArray[indexPath.item]
+            self.characterId = character.id
+            self.performSegue(withIdentifier: "showCharacterDetails", sender: nil)
+        }
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "showCharacterDetails"{
+            let destinationvc = segue.destination
+            
+            if let detailsvc = destinationvc as? CharacterDetailViewController{
+                detailsvc.presenter = self.presenter
+                detailsvc.characterId = self.characterId
+            }
+        }
     }
-    */
+    
 
 }
