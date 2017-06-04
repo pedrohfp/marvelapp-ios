@@ -11,6 +11,7 @@ import UIKit
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     @IBOutlet weak var characterTableView: UITableView!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     //Instantiate SearchBar
     let searchBar: UISearchBar
@@ -52,7 +53,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         //Setting delegates and data sources
         self.characterTableView.delegate = self
         self.characterTableView.dataSource = self
+        self.characterTableView.isHidden = true
         self.characterTableView.tag = 0
+        
+        self.loading.startAnimating()
         
         //
         // Set the login controller to the MainViewModel:
@@ -80,11 +84,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func loadAllCharacters(characterArray: [Character]){
         self.characterArray = characterArray
         self.characterTableView.reloadData()
+        self.characterTableView.isHidden = false
+        self.loading.stopAnimating()
     }
     
     func loadCharactersBySearch(characterArray: [Character]){
         self.searchCharacterArray = characterArray
         self.characterTableView.reloadData()
+        self.characterTableView.isHidden = false
+        self.loading.stopAnimating()
     }
     
     func cleanSearchTableView(){

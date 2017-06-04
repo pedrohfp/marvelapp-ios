@@ -25,6 +25,14 @@ class CharacterDetailViewController: UIViewController, UICollectionViewDelegate,
     @IBOutlet weak var comicTitle: UILabel!
     @IBOutlet weak var comicCollectionView: UICollectionView!
     @IBOutlet weak var lineViewConstraintHeight: NSLayoutConstraint!
+    @IBOutlet weak var imageStackView: UIStackView!
+    @IBOutlet weak var descriptionStackView: UIStackView!
+    @IBOutlet weak var lineView: UIView!
+    @IBOutlet weak var comicsStackView: UIStackView!
+    @IBOutlet weak var eventsStackView: UIStackView!
+    @IBOutlet weak var storiesStackView: UIStackView!
+    @IBOutlet weak var seriesStackView: UIStackView!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +41,17 @@ class CharacterDetailViewController: UIViewController, UICollectionViewDelegate,
         
         self.comicCollectionView.delegate = self
         self.comicCollectionView.dataSource = self
+        
+        self.imageStackView.isHidden = true
+        self.descriptionStackView.isHidden = true
+        self.lineView.isHidden = true
+        self.comicsStackView.isHidden = true
+        self.eventsStackView.isHidden = true
+        self.storiesStackView.isHidden = true
+        self.seriesStackView.isHidden = true
+        self.loading.isHidden = false
+        
+        self.loading.startAnimating()
         
         //
         // Set the character detail controller to the HomePresenter:
@@ -71,6 +90,17 @@ class CharacterDetailViewController: UIViewController, UICollectionViewDelegate,
         }
         
         self.comicCollectionView.reloadData()
+        
+        self.imageStackView.isHidden = false
+        self.descriptionStackView.isHidden = false
+        self.lineView.isHidden = false
+        self.comicsStackView.isHidden = false
+        self.eventsStackView.isHidden = false
+        self.storiesStackView.isHidden = false
+        self.seriesStackView.isHidden = false
+        
+        self.loading.stopAnimating()
+
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

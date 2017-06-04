@@ -67,12 +67,20 @@
                                     <outlet property="delegate" destination="jce-yA-ULw" id="xcF-4h-ms2"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="idl-GT-Hwy">
+                                <rect key="frame" x="150" y="274" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="idl-GT-Hwy" firstAttribute="centerY" secondItem="31N-of-yMx" secondAttribute="centerY" id="Kik-Ma-11K"/>
+                            <constraint firstItem="idl-GT-Hwy" firstAttribute="centerX" secondItem="31N-of-yMx" secondAttribute="centerX" id="NG6-LW-eR5"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MHO-MR-9u7"/>
                     <connections>
                         <outlet property="characterTableView" destination="mfl-uS-5Uq" id="dTm-Qc-AjG"/>
+                        <outlet property="loading" destination="idl-GT-Hwy" id="xlg-Lu-K3Z"/>
                         <segue destination="bTp-G6-a7b" kind="show" identifier="showCharacterDetails" id="ZzR-I0-6hA"/>
                     </connections>
                 </viewController>
@@ -256,8 +264,8 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ET9-aK-rjj">
-                                                <rect key="frame" x="8" y="513" width="304" height="31"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ET9-aK-rjj">
+                                                <rect key="frame" x="8" y="514" width="304" height="31"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="fSn-k7-odJ">
                                                         <rect key="frame" x="0.0" y="0.0" width="304" height="30"/>
@@ -320,10 +328,15 @@
                                                     </view>
                                                 </subviews>
                                             </stackView>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="xDW-SK-aHL">
+                                                <rect key="frame" x="150" y="330" width="20" height="20"/>
+                                            </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="xDW-SK-aHL" firstAttribute="centerX" secondItem="AH8-ku-lsT" secondAttribute="centerX" id="1Ip-mU-7Wu"/>
                                             <constraint firstItem="tAm-k0-fxs" firstAttribute="top" secondItem="AH8-ku-lsT" secondAttribute="top" constant="8" id="3sa-Qh-s29"/>
+                                            <constraint firstItem="xDW-SK-aHL" firstAttribute="centerY" secondItem="AH8-ku-lsT" secondAttribute="centerY" id="46j-xx-eoK"/>
                                             <constraint firstItem="uDN-HD-p4P" firstAttribute="leading" secondItem="AH8-ku-lsT" secondAttribute="leading" constant="8" id="6Wb-dZ-mP0"/>
                                             <constraint firstAttribute="trailing" secondItem="ET9-aK-rjj" secondAttribute="trailing" constant="8" id="8ft-bw-KCk"/>
                                             <constraint firstAttribute="trailing" secondItem="xZx-6c-eM0" secondAttribute="trailing" constant="8" id="BVM-3b-aKG"/>
@@ -365,6 +378,7 @@
                             <constraint firstItem="Ndu-Yb-VoA" firstAttribute="leading" secondItem="Otr-l2-J2b" secondAttribute="leading" id="sgi-pk-qQT"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="8Wv-1M-BXr"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="680"/>
                     <connections>
@@ -374,7 +388,15 @@
                         <outlet property="characterName" destination="VNt-3y-XJw" id="Nny-7w-2PW"/>
                         <outlet property="comicCollectionView" destination="Lmn-x2-1Zd" id="Haa-jW-jjf"/>
                         <outlet property="comicTitle" destination="uqe-fW-5fB" id="MwL-ff-5ZY"/>
+                        <outlet property="comicsStackView" destination="RPA-Kw-fIE" id="Qfw-NT-sJ1"/>
+                        <outlet property="descriptionStackView" destination="uDN-HD-p4P" id="yBb-d4-rpK"/>
+                        <outlet property="eventsStackView" destination="H4E-hF-46K" id="blJ-27-CBq"/>
+                        <outlet property="imageStackView" destination="tAm-k0-fxs" id="vpe-D1-LXz"/>
+                        <outlet property="lineView" destination="xZx-6c-eM0" id="MnR-5l-TtC"/>
                         <outlet property="lineViewConstraintHeight" destination="JSX-GO-N5P" id="yV5-3K-8Lc"/>
+                        <outlet property="loading" destination="xDW-SK-aHL" id="SlO-Vf-fFy"/>
+                        <outlet property="seriesStackView" destination="Woc-bO-aTh" id="0kP-TE-jBu"/>
+                        <outlet property="storiesStackView" destination="ET9-aK-rjj" id="WIz-NC-qDh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sON-ud-oWQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -469,6 +491,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2oz-N3-zeN"/>
+        <segue reference="de0-fJ-abq"/>
     </inferredMetricsTieBreakers>
 </document>
