@@ -31,6 +31,8 @@
 		963E2A6B1EDF8F87002117ED /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963E2A6A1EDF8F87002117ED /* HomePresenter.swift */; };
 		963E2A6D1EDF8FDA002117ED /* HomeContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963E2A6C1EDF8FDA002117ED /* HomeContract.swift */; };
 		966FC3AD1EE391AC00B25A2C /* ComicsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 966FC3AC1EE391AC00B25A2C /* ComicsCollectionViewCell.swift */; };
+		96DEAB7A1EE3D9FD004C5115 /* EventsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEAB791EE3D9FD004C5115 /* EventsCollectionViewCell.swift */; };
+		96DEAB7C1EE3DAC0004C5115 /* EventsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DEAB7B1EE3DAC0004C5115 /* EventsCollectionViewController.swift */; };
 		96F0EF441EE372AA00CF20C6 /* CharacterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96F0EF431EE372AA00CF20C6 /* CharacterDetailViewController.swift */; };
 		D44BA720464B6038161E9E73 /* Pods_MarvelApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FF38CB022991ED249D7656A /* Pods_MarvelApp.framework */; };
 /* End PBXBuildFile section */
@@ -87,6 +89,8 @@
 		963E2A6C1EDF8FDA002117ED /* HomeContract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeContract.swift; sourceTree = "<group>"; };
 		963E2A701EDFAFF8002117ED /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
 		966FC3AC1EE391AC00B25A2C /* ComicsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComicsCollectionViewCell.swift; sourceTree = "<group>"; };
+		96DEAB791EE3D9FD004C5115 /* EventsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewCell.swift; sourceTree = "<group>"; };
+		96DEAB7B1EE3DAC0004C5115 /* EventsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsCollectionViewController.swift; sourceTree = "<group>"; };
 		96F0EF431EE372AA00CF20C6 /* CharacterDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,6 +238,8 @@
 				963E2A661EDF7EFB002117ED /* HomeTableViewCell.swift */,
 				96F0EF431EE372AA00CF20C6 /* CharacterDetailViewController.swift */,
 				966FC3AC1EE391AC00B25A2C /* ComicsCollectionViewCell.swift */,
+				96DEAB791EE3D9FD004C5115 /* EventsCollectionViewCell.swift */,
+				96DEAB7B1EE3DAC0004C5115 /* EventsCollectionViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -515,7 +521,9 @@
 				963E2A4F1EDF66E0002117ED /* RestFactory.swift in Sources */,
 				963E2A6D1EDF8FDA002117ED /* HomeContract.swift in Sources */,
 				963E2A0E1EDF569A002117ED /* AppDelegate.swift in Sources */,
+				96DEAB7C1EE3DAC0004C5115 /* EventsCollectionViewController.swift in Sources */,
 				963E2A691EDF8095002117ED /* CharacterModel.swift in Sources */,
+				96DEAB7A1EE3D9FD004C5115 /* EventsCollectionViewCell.swift in Sources */,
 				963E2A671EDF7EFB002117ED /* HomeTableViewCell.swift in Sources */,
 				963E2A631EDF73A1002117ED /* HomeViewController.swift in Sources */,
 			);

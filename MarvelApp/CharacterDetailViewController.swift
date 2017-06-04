@@ -20,10 +20,12 @@ class CharacterDetailViewController: UIViewController, UICollectionViewDelegate,
     
     @IBOutlet weak var characterImageView: UIImageView!
     @IBOutlet weak var characterName: UILabel!
+    @IBOutlet weak var characterDescriptionTitle: UILabel!
     @IBOutlet weak var characterDescription: UITextView!
+    @IBOutlet weak var comicTitle: UILabel!
     @IBOutlet weak var comicCollectionView: UICollectionView!
+    @IBOutlet weak var lineViewConstraintHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var comicCollectionHeightConstraint: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,8 +58,16 @@ class CharacterDetailViewController: UIViewController, UICollectionViewDelegate,
         self.characterName.text = character.name
         self.characterDescription.text = character.description
         
+        if character.description == ""{
+            self.characterDescriptionTitle.isHidden = true
+            self.characterDescription.isHidden = true
+            self.lineViewConstraintHeight.constant = 0
+        }
+        
         if character.comics?.count == 0{
-            self.comicCollectionHeightConstraint.constant = 0
+            self.lineViewConstraintHeight.constant = 0
+            self.comicTitle.isHidden = true
+            self.comicCollectionView.isHidden = true
         }
         
         self.comicCollectionView.reloadData()
@@ -84,14 +94,23 @@ class CharacterDetailViewController: UIViewController, UICollectionViewDelegate,
     }
     
 
-    /*
-     MARK: - Navigation
+    
+     //MARK: - Navigation
 
-     In a storyboard-based application, you will often want to do a little preparation before navigation
+     //In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-         Get the new view controller using segue.destinationViewController.
-         Pass the selected object to the new view controller.
+         //Get the new view controller using segue.destinationViewController.
+         //Pass the selected object to the new view controller.
+        
+        if segue.identifier == "showEvents"{
+            let destinationvc = segue.destination
+            
+            if let detailsvc = destinationvc as? EventsCollectionViewController{
+                detailsvc.presenter = self.presenter
+                detailsvc.characterId = self.characterId
+            }
+        }
     }
-    */
+    
 
 }

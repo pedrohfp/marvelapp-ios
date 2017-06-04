@@ -11,7 +11,9 @@ import Foundation
 protocol HomeContract{
     func set(h: HomeViewController)
     func set(c: CharacterDetailViewController)
+    func set(e: EventsCollectionViewController)
     func loadAllCharacters(offset: Int)
     func searchCharacterByName(name: String, offset: Int)
     func loadDetailCharacter(characterId: Int64)
+    func loadEventsByCharacter(characterId: Int64)
 }
