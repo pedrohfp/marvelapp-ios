@@ -102,14 +102,24 @@ class CharacterDetailViewController: UIViewController, UICollectionViewDelegate,
          //Get the new view controller using segue.destinationViewController.
          //Pass the selected object to the new view controller.
         
-        if segue.identifier == "showEvents"{
-            let destinationvc = segue.destination
+        let destinationvc = segue.destination
             
-            if let detailsvc = destinationvc as? EventsCollectionViewController{
+        if let detailsvc = destinationvc as? EventsCollectionViewController{
+            if segue.identifier == "showEvents"{
                 detailsvc.presenter = self.presenter
                 detailsvc.characterId = self.characterId
+                detailsvc.typeEvent = TypeEvent.event
+            }else if segue.identifier == "showStories"{
+                detailsvc.presenter = self.presenter
+                detailsvc.characterId = self.characterId
+                detailsvc.typeEvent = TypeEvent.storie
+            }else if segue.identifier == "showSeries"{
+                detailsvc.presenter = self.presenter
+                detailsvc.characterId = self.characterId
+                detailsvc.typeEvent = TypeEvent.serie
             }
         }
+        
     }
     
 

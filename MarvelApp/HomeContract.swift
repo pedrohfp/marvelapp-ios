@@ -16,4 +16,6 @@ protocol HomeContract{
     func searchCharacterByName(name: String, offset: Int)
     func loadDetailCharacter(characterId: Int64)
     func loadEventsByCharacter(characterId: Int64)
+    func loadStoriesByCharacter(characterId: Int64)
+    func loadSeriesByCharacter(characterId: Int64)
 }

@@ -59,9 +59,25 @@ class HomePresenter : BasePresenter, HomeContract{
     }
     
     func loadEventsByCharacter(characterId: Int64){
-        CharacterModel.instance.loadEventsByCharacter(characterId: characterId).observeOn(Schedulers.network).subscribe(
+        CharacterModel.instance.loadEventsByCharacter(characterId: characterId).observeOn(Schedulers.ui).subscribe(
             onNext: { [unowned self] events in
                 self.eventsCollectionViewController?.showEvents(events: events)
+            }
+        ).addDisposableTo(getDisposeBag())
+    }
+    
+    func loadStoriesByCharacter(characterId: Int64){
+        CharacterModel.instance.loadStoriesByCharacter(characterId: characterId).observeOn(Schedulers.ui).subscribe(
+            onNext: { [unowned self] stories in
+                self.eventsCollectionViewController?.showStories(stories: stories)
+            }
+        ).addDisposableTo(getDisposeBag())
+    }
+    
+    func loadSeriesByCharacter(characterId: Int64) {
+        CharacterModel.instance.loadSeriesByCharacter(characterId: characterId).observeOn(Schedulers.ui).subscribe(
+            onNext: { [unowned self] series in
+                self.eventsCollectionViewController?.showSeries(series: series)
             }
         ).addDisposableTo(getDisposeBag())
     }

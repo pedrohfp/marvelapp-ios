@@ -267,6 +267,9 @@
                                                                 <state key="normal" title="Histórias">
                                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <segue destination="KpY-Sw-Dtf" kind="show" identifier="showStories" id="de0-fJ-abq"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ZJ-d1-kGh">
                                                                 <rect key="frame" x="257.5" y="0.0" width="46.5" height="30"/>
@@ -296,6 +299,9 @@
                                                                 <state key="normal" title="Series">
                                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <segue destination="KpY-Sw-Dtf" kind="show" identifier="showSeries" id="n4W-PL-IVH"/>
+                                                                </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4O-XN-a9r">
                                                                 <rect key="frame" x="242" y="0.0" width="62" height="30"/>
@@ -375,11 +381,11 @@
             </objects>
             <point key="canvasLocation" x="1927.5" y="166.90140845070422"/>
         </scene>
-        <!--Eventos-->
+        <!--Events Collection View Controller-->
         <scene sceneID="PN4-O0-MvK">
             <objects>
                 <collectionViewController id="KpY-Sw-Dtf" customClass="EventsCollectionViewController" customModule="MarvelApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6pI-So-3pk">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="6pI-So-3pk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="680"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -431,11 +437,10 @@
                             <outlet property="delegate" destination="KpY-Sw-Dtf" id="SNG-5p-uo0"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Eventos" id="OMT-nn-dtr"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3vL-Ta-Vyr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2741.25" y="-212.32394366197184"/>
+            <point key="canvasLocation" x="2751" y="167"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9ZO-CD-Rf1">
@@ -463,4 +468,7 @@
             <point key="canvasLocation" x="132" y="167.76611694152925"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="2oz-N3-zeN"/>
+    </inferredMetricsTieBreakers>
 </document>
