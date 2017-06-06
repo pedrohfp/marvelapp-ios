@@ -11,4 +11,5 @@ import UIKit
 class ComicsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var comicImageView: UIImageView!
     @IBOutlet weak var comicTitleLable: UILabel!
+    
 }

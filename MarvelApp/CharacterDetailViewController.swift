@@ -69,6 +69,7 @@ class CharacterDetailViewController: UIViewController, UICollectionViewDelegate,
     }
     
     func showCharacterDetail(character: Character){
+        
         print(character.comics!)
         
         self.character = character
